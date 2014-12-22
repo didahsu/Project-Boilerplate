@@ -7,11 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "DidaHsu",
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
-  },
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^1.7.2",

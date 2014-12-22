@@ -78,7 +78,8 @@ gulp.task('browserify', function(done){
     var bundleConfigs = [{
         entries: path.js+'/app.js',
         dest: path.dest,
-        outputName : 'app.js'
+        outputName : 'app.js',
+        transform: ['reactify']
     }];
 
     var bundleQueue = bundleConfigs.length;
@@ -91,6 +92,7 @@ gulp.task('browserify', function(done){
             debug: true,
             extensions: ['js'],
             entries: bundleConfig.entries,
+            transform: bundleConfig.transform
         });
 
         var bundle = function(){
@@ -150,4 +152,6 @@ gulp.task('setWatch', function(){
 
 gulp.task('watch', ['setWatch','browserSync'], function(){
     gulp.watch(path.markup, ['markup']);
+    gulp.watch(config.sass.src, ['sass']);
+    gulp.watch(config.images.src, ['images']);
 });
