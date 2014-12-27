@@ -13,7 +13,7 @@ gulp.task('sass',['images'], function(){
         sourceComments: 'map',
         imagePath: '/images'
     }))
-    .on('error', handleError)
+    .on('error', handleErrors)
     .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 version'] }))
     .pipe(gulp.dest(config.dest))
