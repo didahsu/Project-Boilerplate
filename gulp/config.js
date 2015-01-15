@@ -18,7 +18,7 @@ module.exports = {
         dest: dest
     },
     sass: {
-        src: src + "/sass/*.{sass, scss}",
+        src: [src + "/sass/*.scss",src + "/sass/*.sass"],
         dest: dest,
         settings: {
             sourceComments: 'map',
@@ -27,7 +27,7 @@ module.exports = {
     },
     images: {
         src: src + "/images/**",
-        dest: dest + "/images"
+        dest: dest
     },
     browserify: {
         debug: true,
