@@ -6,7 +6,7 @@ var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var config       = require('../config').browserify;
 var gutil        = require('gulp-util');
-
+var browserSync  = require('browser-sync');
 gulp.task('browserify', function(done){
     var bundleQueue = config.bundleConfigs.length;
 
@@ -28,7 +28,9 @@ gulp.task('browserify', function(done){
             .on('error', handleErrors)
             .pipe(source(bundleConfig.outputName))
             .pipe(gulp.dest(bundleConfig.dest))
-            .on('end', reportFinished);
+            .on('end', reportFinished)
+            .pipe(browserSync.reload({stream:true}));
+
         }
 
         if(global.isWatching){
